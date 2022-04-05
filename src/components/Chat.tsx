@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Chat = () => {
+  const [chatList, setChatList] = useState([{}, {}, {}, {}])
+
   return (
     <StyledChat>
       <img className='photo-chat' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRqRyIiwYCq4s-fZi1zdmyfSuIPUvg9EyZ_Q&usqp=CAU' alt='Foto do chat' />
@@ -11,7 +13,7 @@ const Chat = () => {
           <span className='hour'>21:05</span>
         </div>
         <div className='last-messenger-notification'>
-          <span className='last-messenger'>É isso ai cara, sabe como é né, mané</span>
+          <p className='last-messenger'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ullam, fugit veniam sunt beatae laborum vitae maxime ex perferendis, reprehenderit atque consequuntur omnis minima eveniet cumque! Assumenda commodi cupiditate iste.</p>
           <span className='notification'>1</span>
         </div>
       </div>
@@ -42,8 +44,11 @@ const StyledChat = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1;
+    justify-content: center;
     margin-left: 10px;
     padding: 10px 0;
+    flex-wrap: wrap;
+    min-width: 0;
     
     border-bottom: 1px solid #272F34;
 
@@ -51,6 +56,7 @@ const StyledChat = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
 
       .name {
         font-family: Arial;
@@ -74,11 +80,18 @@ const StyledChat = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
 
-      .last-messenger {
+      p {
+        display: flex;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
         font-family: Arial;
         font-weight: 400;
         font-size: 14px;
+        margin: 0;
 
         color: #8696a0;
       }

@@ -1,11 +1,13 @@
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faCommentDots, faEllipsisV, faBellSlash, faAngleRight, faSearch } from '@fortawesome/free-solid-svg-icons'
-import React from 'react'
 import styled from 'styled-components'
 import Chat from './Chat'
 // import photoPerfil from '../assets/Images/photo-perfil.png'
 
 const WhatsApp = () => {
+  const [chatList, setChatList] = useState([{}, {}, {}, {}])
+
   return (
     <StyledWhatsApp>
       <div className='sidebar'>
@@ -41,7 +43,11 @@ const WhatsApp = () => {
           </div>
         </div>
         <div className='sidebar-chatlist'>
-          <Chat />
+          {chatList.map((chat, key) => (
+            <Chat
+              key={key}
+            />
+          ))}
         </div>
       </div>
       <div className='content-area'>
@@ -211,10 +217,11 @@ const StyledWhatsApp = styled.aside`
       display: flex;
       flex-direction: column;
       justify-content: center;
+      overflow-y: auto;
     }
   }
 
   .content-area {
-
+    
   }
 `
